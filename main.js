@@ -25,7 +25,41 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+const validateCred = (array) => {
+  let total = 0;
+  for (let i = array.length - 1; i >= 0; i--) {
+    let currValue = array[i]
+    if((array.length - 1 - i) % 2 === 1) {
+    	currValue *= 2;
+    	if (currValue > 9) {
+    		currValue -= 9;
+    	}
+    }
+    total += currValue;
+  }
 
+  return total % 10 === 0;
+}
+
+console.log(validateCred(valid1));
+
+const findInvalidCards = (nestedArray) => {
+	let invalidBatch = [];
+	for (let i = 0; i < nestedArray.length; i++) {
+		let currCred = nestedArray[i];
+		if (!validateCred(currCred)) {
+			invalidBatch.push(currCred);
+		}
+	}
+	return invalidBatch;
+}
+
+console.log(findInvalidCards(batch));
+
+function idInvalidCardCompanies(nestedArray) {
+	const companies = [];
+	for ( let i = 0; i < nestedArray.length; i++)
+}
 
 
 
